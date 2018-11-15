@@ -38,7 +38,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (auto-complete ## slime yasnippet))))
+ '(package-selected-packages (quote (neotree auto-complete ## slime yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -66,7 +66,7 @@
                    (interactive)
                    (kill-buffer nil)
                    (set-window-configuration ,window-configuration)))
-               (use-local-map hs-map)))))
+n               (use-local-map hs-map)))))
     ad-do-it))
 
 ;日本語利用
@@ -84,3 +84,22 @@
 ; リージョンに色を付ける
 ;=======================================================================
 (setq transient-mark-mode t)
+
+;=======================================================================
+; 行数を表示する
+;=======================================================================
+(global-linum-mode t)
+(setq linum-format "%d ")
+
+
+;=======================================================================
+; ディレクトリツリー表示
+;=======================================================================
+(setq neo-theme 'ascii) ;; icon, classic等もあるよ！
+(setq neo-persist-show t) ;; delete-other-window で neotree ウィンドウを消さない
+(setq neo-smart-open t) ;; neotree ウィンドウを表示する毎に current file のあるディレクトリを表示する
+
+;=======================================================================
+;スクロールバー非表示
+;=======================================================================
+(scroll-bar-mode 0)
