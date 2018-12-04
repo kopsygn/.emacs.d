@@ -14,9 +14,15 @@
 (setq indent-tabs-mode t)
 
 (setq-default tab-width 2)
-(setq default-tab-width 2)
 (setq tab-stop-list '(2 4 6 8 10 12 14 16 18 20 22 24 26 28
 			30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60))
+
+;;"C-t"でウィンドウをを切り替える。
+(define-key global-map (kbd "C-t") 'other-window)
+
+;;自動でファイルツリー
+(add-hook 'emacs-startup-hook 'neotree-toggle)
+
 
 ;;
 ;; Auto Complete
@@ -50,8 +56,6 @@
       common-lisp-hyperspec-symbol-table
       (expand-file-name "/usr/share/doc/hyperspec/Data/Map_Sym.txt"))
 
-;w3mの設定
-(require 'w3m-load)
 
 ;; HyperSpecをw3mで見る
 (defadvice common-lisp-hyperspec
@@ -66,7 +70,7 @@
                    (interactive)
                    (kill-buffer nil)
                    (set-window-configuration ,window-configuration)))
-n               (use-local-map hs-map)))))
+               (use-local-map hs-map)))))
     ad-do-it))
 
 ;日本語利用
@@ -103,3 +107,4 @@ n               (use-local-map hs-map)))))
 ;スクロールバー非表示
 ;=======================================================================
 (scroll-bar-mode 0)
+
